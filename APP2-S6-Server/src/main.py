@@ -1,6 +1,6 @@
 import socket
 
-HOST = "0.0.0.0"
+HOST = "192.168.0.26" # Changer l'IP pour l'adresse de ton ordi
 PORT = 8888
 
 if __name__ == "__main__":
@@ -12,7 +12,6 @@ if __name__ == "__main__":
         with conn:
             print(f"Connected by {addr}")
             while True:
-                print("allo")
                 data = conn.recv(1024)
                 if not data:
                     break
