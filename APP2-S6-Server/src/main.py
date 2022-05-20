@@ -1,10 +1,12 @@
 import socket
 
-HOST = "192.168.0.26" # Changer l'IP pour l'adresse de ton ordi
+HOST_OLIVIER = "192.168.0.26"
+HOST_PAUL = "10.0.0.133"
+HOST = HOST_PAUL
 PORT = 8888
 
+
 if __name__ == "__main__":
-    
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind((HOST, PORT))
         s.listen()
