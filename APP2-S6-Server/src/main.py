@@ -11,8 +11,9 @@ PORT = 8888
 # Température: 2 bytes + 40 Celcius pour une étendue postive * 10 pour les dizièmes (-40 à 85 Celcius)
 # Pression: 3 bytes en Pascal (300 à 1200 hPa)
 # Direction du vent: 2 bytes * 10 pour les dizièmes (0 à 360 Degrés)
-# Force du vent: 2 bytes (0 à ?? km/h)
-# Pluie: 2 bytes (0 à ?? mm)
+# Force du vent: 2 bytes (0 à ?? km/h) * 10 pour les dizièmes
+# Pluie: 2 bytes (0 à ?? mm) * 10 pour les dizièmes
+# Humidité: 1 byte (0 à 100 %)
 #########################################
 
 
@@ -32,13 +33,15 @@ if __name__ == "__main__":
                 temperature = ((data[2] << 8) | data[3]) / 10 - 40
                 pressure = ((data[4] << 16) | (data[5] << 8)) | data[6]
                 windDirection = ((data[7] << 8) | data[8]) / 10
-                windSpeed = (data[9] << 8) | data[10]
-                rain = (data[11] << 8) | data[12]
+                windSpeed = ((data[9] << 8) | data[10]) / 10
+                rain = ((data[11] << 8) | data[12]) / 10
+                humidity = data[13]
 
                 print("========= New Data =========")
                 print("Light: {:.0f}".format(light))
-                print("Temperature: {:.1f}".format(temperature))
-                print("Pressure: {:.0f}".format(pressure))
-                print("Wind Direction: {:.1f}".format(windDirection))
-                print("Wind Speed: {:.0f}".format(windSpeed))
-                print("Rain: {:.0f}".format(rain))
+                print("Temperature: {:.1f} °C".format(temperature))
+                print("Pressure: {:.0f} Pa".format(pressure))
+                print("Wind Direction: {:.1f} °".format(windDirection))
+                print("Wind Speed: {:.1f} km/h".format(windSpeed))
+                print("Rain: {:.1f} mm".format(rain))
+                print("Humidité: {:.0f} %".format(humidity))
