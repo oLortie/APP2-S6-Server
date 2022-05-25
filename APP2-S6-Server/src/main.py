@@ -38,10 +38,10 @@ if __name__ == "__main__":
                 humidity = data[13]
 
                 print("========= New Data =========")
-                print("Light: {:.0f}".format(light))
-                print("Temperature: {:.1f} °C".format(temperature))
-                print("Pressure: {:.0f} Pa".format(pressure))
-                print("Wind Direction: {:.1f} °".format(windDirection))
-                print("Wind Speed: {:.1f} km/h".format(windSpeed))
-                print("Rain: {:.1f} mm".format(rain))
+                print("Lumière: {:.0f}".format(light))
+                print("Température: {:.1f} °C".format(temperature))
+                print("Pression: {:.0f} Pa".format(pressure))
+                print("Direction du vent: {:.1f} °".format(windDirection))
+                print("Vitesse du vent: {:.1f} km/h".format(windSpeed))
+                print("Précipitations: {:.1f} mm".format(rain))
                 print("Humidité: {:.0f} %".format(humidity))
